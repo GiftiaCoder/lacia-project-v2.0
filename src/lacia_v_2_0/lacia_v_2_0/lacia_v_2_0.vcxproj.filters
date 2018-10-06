@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="exception.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="gbuff.cpp">
+      <Filter>gbuff</Filter>
+    </ClCompile>
+    <ClCompile Include="lacia_layer.cpp">
+      <Filter>lacia</Filter>
+    </ClCompile>
+    <ClCompile Include="lacia_reduct_layer.cpp">
+      <Filter>lacia</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h" />
+    <ClInclude Include="exception.h" />
+    <ClInclude Include="gbuff.h">
+      <Filter>gbuff</Filter>
+    </ClInclude>
+    <ClInclude Include="lacia.h">
+      <Filter>lacia</Filter>
+    </ClInclude>
+    <ClInclude Include="lacia_network.h">
+      <Filter>lacia</Filter>
+    </ClInclude>
+    <ClInclude Include="lacia_layer.h">
+      <Filter>lacia</Filter>
+    </ClInclude>
+    <ClInclude Include="lacia_reduct_layer.h">
+      <Filter>lacia</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="gbuff">
+      <UniqueIdentifier>{5aba8ce5-638b-4394-83ec-084560e20403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lacia">
+      <UniqueIdentifier>{7c5fac4d-4fef-48c5-8aef-2a0554c1c175}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="gbuff_algo_inc.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_algo_dec.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_algo_multiply.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_algo_sum.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_algo_funcs.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_algo_set.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>
