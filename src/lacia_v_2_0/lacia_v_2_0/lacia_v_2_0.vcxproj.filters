@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="exception.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="gbuff.cpp">
       <Filter>gbuff</Filter>
     </ClCompile>
@@ -11,6 +10,42 @@
     </ClCompile>
     <ClCompile Include="lacia_reduct_layer.cpp">
       <Filter>lacia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-death-test.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-filepath.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-port.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-printers.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-test-part.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest-typed-test.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gtest_main.cc">
+      <Filter>tc</Filter>
+    </ClCompile>
+    <ClCompile Include="TC\gbuff\test_sum.cpp">
+      <Filter>tc\gbuff</Filter>
+    </ClCompile>
+    <ClCompile Include="TC\gbuff\test_setval.cpp">
+      <Filter>tc\gbuff</Filter>
+    </ClCompile>
+    <ClCompile Include="TC\gbuff\test_add.cpp">
+      <Filter>tc\gbuff</Filter>
+    </ClCompile>
+    <ClCompile Include="TC\gbuff\test_minus.cpp">
+      <Filter>tc\gbuff</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +66,84 @@
     <ClInclude Include="lacia_reduct_layer.h">
       <Filter>lacia</Filter>
     </ClInclude>
+    <ClInclude Include="gtest\gtest-death-test.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-message.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-param-test.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-printers.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-spi.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-test-part.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest-typed-test.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest_pred_impl.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\gtest_prod.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\custom\gtest-port.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\custom\gtest-printers.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\custom\gtest.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-death-test-internal.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-filepath.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-internal.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-linked_ptr.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-param-util-generated.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-param-util.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-port-arch.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-port.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-string.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-tuple.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="gtest\internal\gtest-type-util.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gtest-internal-inl.h">
+      <Filter>tc</Filter>
+    </ClInclude>
+    <ClInclude Include="TC\gbuff\test_tools.h">
+      <Filter>tc\gbuff</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gbuff">
@@ -38,6 +151,12 @@
     </Filter>
     <Filter Include="lacia">
       <UniqueIdentifier>{7c5fac4d-4fef-48c5-8aef-2a0554c1c175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tc">
+      <UniqueIdentifier>{f6ddfd52-d918-4dcc-8f91-388b3789a77a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tc\gbuff">
+      <UniqueIdentifier>{6c213b3e-2bbb-4cd6-8aaf-42359b6addf3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

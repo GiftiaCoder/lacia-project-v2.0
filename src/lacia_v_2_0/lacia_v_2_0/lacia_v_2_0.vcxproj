@@ -22,17 +22,54 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="exception.h" />
     <ClInclude Include="gbuff.h" />
+    <ClInclude Include="gtest\gtest-death-test.h" />
+    <ClInclude Include="gtest\gtest-message.h" />
+    <ClInclude Include="gtest\gtest-param-test.h" />
+    <ClInclude Include="gtest\gtest-printers.h" />
+    <ClInclude Include="gtest\gtest-spi.h" />
+    <ClInclude Include="gtest\gtest-test-part.h" />
+    <ClInclude Include="gtest\gtest-typed-test.h" />
+    <ClInclude Include="gtest\gtest.h" />
+    <ClInclude Include="gtest\gtest_pred_impl.h" />
+    <ClInclude Include="gtest\gtest_prod.h" />
+    <ClInclude Include="gtest\internal\custom\gtest-port.h" />
+    <ClInclude Include="gtest\internal\custom\gtest-printers.h" />
+    <ClInclude Include="gtest\internal\custom\gtest.h" />
+    <ClInclude Include="gtest\internal\gtest-death-test-internal.h" />
+    <ClInclude Include="gtest\internal\gtest-filepath.h" />
+    <ClInclude Include="gtest\internal\gtest-internal.h" />
+    <ClInclude Include="gtest\internal\gtest-linked_ptr.h" />
+    <ClInclude Include="gtest\internal\gtest-param-util-generated.h" />
+    <ClInclude Include="gtest\internal\gtest-param-util.h" />
+    <ClInclude Include="gtest\internal\gtest-port-arch.h" />
+    <ClInclude Include="gtest\internal\gtest-port.h" />
+    <ClInclude Include="gtest\internal\gtest-string.h" />
+    <ClInclude Include="gtest\internal\gtest-tuple.h" />
+    <ClInclude Include="gtest\internal\gtest-type-util.h" />
     <ClInclude Include="lacia.h" />
     <ClInclude Include="lacia_layer.h" />
     <ClInclude Include="lacia_network.h" />
     <ClInclude Include="lacia_reduct_layer.h" />
+    <ClInclude Include="src\gtest-internal-inl.h" />
+    <ClInclude Include="TC\gbuff\test_tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exception.cpp" />
     <ClCompile Include="gbuff.cpp" />
     <ClCompile Include="lacia_layer.cpp" />
     <ClCompile Include="lacia_reduct_layer.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\gtest-death-test.cc" />
+    <ClCompile Include="src\gtest-filepath.cc" />
+    <ClCompile Include="src\gtest-port.cc" />
+    <ClCompile Include="src\gtest-printers.cc" />
+    <ClCompile Include="src\gtest-test-part.cc" />
+    <ClCompile Include="src\gtest-typed-test.cc" />
+    <ClCompile Include="src\gtest.cc" />
+    <ClCompile Include="src\gtest_main.cc" />
+    <ClCompile Include="TC\gbuff\test_add.cpp" />
+    <ClCompile Include="TC\gbuff\test_minus.cpp" />
+    <ClCompile Include="TC\gbuff\test_setval.cpp" />
+    <ClCompile Include="TC\gbuff\test_sum.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="gbuff_algo_dec.cu" />
@@ -46,6 +83,7 @@
     <ProjectGuid>{11887786-8D6F-4E32-BB7A-FB84E895B942}</ProjectGuid>
     <RootNamespace>lacia_v_2_0_temp</RootNamespace>
     <ProjectName>lacia_v_2_0</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,15 +131,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>F:\project\googletest\googletest\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>F:\project\googletest\googletest\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>D:\workspace\lacia_v_2_0\lacia_v_2_0;$(IncludePath)</IncludePath>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -122,7 +167,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>cudart.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cudart.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;x64-Release\gtest.lib;x64-Release\gtest_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"
@@ -161,6 +206,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

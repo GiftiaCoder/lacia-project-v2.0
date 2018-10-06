@@ -23,16 +23,9 @@ namespace lacia {
 		cualgo_set_value<<<1024, 128>>>(gpubuf(), size(), v);
 	}
 
-	__device__ real cualgo_get_rand(real o[], count i, real min, real max) {
-		union
-		{
-			struct {
-				count a, b;
-			};
-			real *p;
-		} u;
-		u.p = o + i;
-		real v = (((((((u.a ^ u.b) * 334379) >> 2) * 334363) >> 2) * 334349) >> 2) * 334333 / (real)(count)0xFFFFFFFF;
+	__device__ real cualgo_get_rand(count seed, real min, real max) {
+		count t = ((((((seed * 334379) >> 3) * 334363) >> 3) * 334349) >> 3) * 334333;
+		real v = (real)t / (real)(count)0xFFFFFFFF;
 		return v * (max - min) + min;
 
 	} 
@@ -40,7 +33,17 @@ namespace lacia {
 		count tnm = blockDim.x * gridDim.x;
 		count tid = blockIdx.x * blockDim.x + threadIdx.x;
 		while (tid < n) {
-			o[tid] = cualgo_get_rand(o, tid, min, max);
+
+			union {
+				struct {
+					count a;
+					count b;
+				};
+				real *p;
+			} u;
+			u.p = o + tid;
+
+			o[tid] = cualgo_get_rand(u.a ^ u.b, min, max);
 			tid += tnm;
 		}
 	}

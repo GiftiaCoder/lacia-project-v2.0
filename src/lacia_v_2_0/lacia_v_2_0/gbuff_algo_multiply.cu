@@ -59,11 +59,10 @@ namespace lacia {
 		cualgo_dot_vec<<<1024, 128>>>(gpubuf(), b1.gpubuf(), b2.gpubuf(), size());
 	}
 
-	__global__ void cualgo_cross(real o[], real a[], count an, real b[], count bn) {
+	__global__ void cualgo_cross(real o[], real a[], count an, real b[], count calculate_scale) {
 		count tnm = blockDim.x * gridDim.x;
 		count tid = blockIdx.x * blockDim.x + threadIdx.x;
-		count size = an * bn;
-		while (tid < size) {
+		while (tid < calculate_scale) {
 			o[tid] = a[tid % an] * b[tid / an];
 			tid += tnm;
 		}
@@ -72,7 +71,7 @@ namespace lacia {
 		if (b1.size() * b2.size() != size()) {
 			INVALID_PARAMETER_FAIL();
 		}
-		cualgo_cross<<<1024, 128>>>(gpubuf(), b1.gpubuf(), b1.size(), b2.gpubuf(), b2.size());
+		cualgo_cross<<<1024, 128>>>(gpubuf(), b1.gpubuf(), b1.size(), b2.gpubuf(), b1.size() * b2.size());
 	}
 
 	__global__ void cualgo_dot_multiple(real o[], count on, real a[], count an) {
