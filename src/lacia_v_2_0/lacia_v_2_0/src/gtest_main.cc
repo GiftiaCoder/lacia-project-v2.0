@@ -30,8 +30,24 @@
 #include <stdio.h>
 #include "gtest/gtest.h"
 
+//#define __TEST_FLAG
+
+#ifdef __TEST_FLAG
+
 GTEST_API_ int main(int argc, char **argv) {
   printf("Running main() from %s\n", __FILE__);
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
+
+#else
+
+#include "main.h"
+
+int main(int argc, char **argv) {
+	(void)argc;
+	(void)argv;
+	return _network_demo();
+}
+
+#endif

@@ -2,6 +2,10 @@
 #include "gbuff.h"
 
 #include <cuda_runtime.h>
+#include <cuda_runtime_api.h>
+#include <device_launch_parameters.h>
+
+#include <device_functions.h>
 
 namespace lacia {
 
@@ -9,7 +13,7 @@ namespace lacia {
 		count tnm = blockDim.x * gridDim.x;
 		count tid = blockIdx.x * blockDim.x + threadIdx.x;
 		while (tid < n) {
-			o[tid] = v;
+			o[tid] = (double)v;
 			tid += tnm;
 		}
 	}

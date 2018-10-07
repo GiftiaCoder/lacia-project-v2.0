@@ -19,9 +19,11 @@ gbuff::gbuff(count size) :
 gbuff::~gbuff() {
 	if (_cpubuf) {
 		cudaFreeHost(_cpubuf);
+		_cpubuf = nullptr;
 	}
 	if (_gpubuf) {
 		cudaFree(_gpubuf);
+		_gpubuf = nullptr;
 	}
 }
 

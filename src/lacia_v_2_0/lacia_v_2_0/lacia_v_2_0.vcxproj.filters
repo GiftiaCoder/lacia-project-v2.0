@@ -47,6 +47,10 @@
     <ClCompile Include="TC\gbuff\test_minus.cpp">
       <Filter>tc\gbuff</Filter>
     </ClCompile>
+    <ClCompile Include="TC\gbuff\test_multiple.cpp">
+      <Filter>tc\gbuff</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -144,6 +148,7 @@
     <ClInclude Include="TC\gbuff\test_tools.h">
       <Filter>tc\gbuff</Filter>
     </ClInclude>
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gbuff">

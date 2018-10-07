@@ -50,6 +50,7 @@
     <ClInclude Include="lacia_layer.h" />
     <ClInclude Include="lacia_network.h" />
     <ClInclude Include="lacia_reduct_layer.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="src\gtest-internal-inl.h" />
     <ClInclude Include="TC\gbuff\test_tools.h" />
   </ItemGroup>
@@ -58,6 +59,7 @@
     <ClCompile Include="gbuff.cpp" />
     <ClCompile Include="lacia_layer.cpp" />
     <ClCompile Include="lacia_reduct_layer.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\gtest-death-test.cc" />
     <ClCompile Include="src\gtest-filepath.cc" />
     <ClCompile Include="src\gtest-port.cc" />
@@ -68,6 +70,7 @@
     <ClCompile Include="src\gtest_main.cc" />
     <ClCompile Include="TC\gbuff\test_add.cpp" />
     <ClCompile Include="TC\gbuff\test_minus.cpp" />
+    <ClCompile Include="TC\gbuff\test_multiple.cpp" />
     <ClCompile Include="TC\gbuff\test_setval.cpp" />
     <ClCompile Include="TC\gbuff\test_sum.cpp" />
   </ItemGroup>
@@ -206,7 +209,8 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FloatingPointModel>Precise</FloatingPointModel>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -221,7 +225,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <CodeGeneration>compute_61,sm_61</CodeGeneration>
+      <CodeGeneration>compute_60,sm_60</CodeGeneration>
       <Keep>true</Keep>
     </CudaCompile>
   </ItemDefinitionGroup>
