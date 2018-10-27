@@ -27,59 +27,54 @@ namespace lacia {
 		inline real *operator() () {
 			return gpubuf();
 		}
+		void cpyfrom(count offset, real src[], count len);
+		void cpyto(count offset, real dst[], count len);
 
 	public:
 		void push();
 		void pull();
 		void wait();
 
+		void load(std::ifstream &in);
+		void save(std::ofstream &out);
+
 	public:
 		void zero();
 		void one();
-		void set(real v);
-		void rand(real min, real max);
+		void set(real value);
+		void rand(real min, real max, seed_t seed = 0L);
 
-		// this += v
-		void inc(real v);
-		// this += b
-		void inc(gbuff &b);
-		// this = b + v
-		void add(gbuff &b, real v);
-		// this = b1 + b2
-		void add(gbuff &b1, gbuff &b2);
+#define DEC_GBUFF_VALUE_OPS(_name_) \
+	void _name_(real val); \
+	void _name_(gbuff &in, real val);
+#define DEC_GBUFF_GBUFF_OPS(_name_) \
+	void _name_(gbuff &in); \
+	void _name_(gbuff &in1, gbuff &in2);
+#define DEC_GBUFF_ALL_OPS(_name_) \
+	DEC_GBUFF_VALUE_OPS(_name_) \
+	DEC_GBUFF_GBUFF_OPS(_name_)
 
-		// this -= v
-		void dec(real v);
-		// this -= b
-		void dec(gbuff &b);
-		// this = b - v
-		void minus(gbuff &b, real v);
-		// this = b1 - b2
-		void minus(gbuff &b1, gbuff &b2);
+		DEC_GBUFF_ALL_OPS(plus)
+		DEC_GBUFF_ALL_OPS(minus)
+		DEC_GBUFF_ALL_OPS(multiple)
+		DEC_GBUFF_ALL_OPS(divide)
 
-		// this *= v
-		void dot(real v);
-		// this *= b (dot)
-		void dot(gbuff &b);
-		// this = b * v
-		void dot(gbuff &b, real v);
-		// this = b1 * b2 (dot)
-		void dot(gbuff &b1, gbuff &b2);
-		// this = b1 * b2 (cross)
+		DEC_GBUFF_GBUFF_OPS(grouped_multiple)
+		DEC_GBUFF_GBUFF_OPS(grouped_multiple_t)
+
 		void cross(gbuff &b1, gbuff &b2);
-		// this *= b (dot multiple)
-		void dot_multiple(gbuff &b);
-		// this *= b (dot multiple)
-		void dot_multiple_t(gbuff &b);
-		// this = b1 * b2 (dot multiple)
-		void dot_multiple(gbuff &b1, gbuff &b2);
-		// this = b1 * b2 (dot multiple transformed)
-		void dot_multiple_t(gbuff &b1, gbuff &b2);
 
 		void sum(gbuff &b);
 
+	public:
 		void tanh();
 		void tanhex();
+		void cut();
+		
+		void relu();
+		void prelu();
+		void elu();
+		void selu();
 
 	private:
 		count _sz;

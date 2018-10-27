@@ -1,21 +1,13 @@
 
 #include "gbuff.h"
-
-#include <cuda_runtime.h>
-#include <cuda_runtime_api.h>
-#include <device_launch_parameters.h>
-
-#include <device_functions.h>
+#include "gbuff_defs.cuh"
 
 namespace lacia {
 
-	__global__ void cualgo_set_value(real o[], count n, real v) {
-		count tnm = blockDim.x * gridDim.x;
-		count tid = blockIdx.x * blockDim.x + threadIdx.x;
-		while (tid < n) {
-			o[tid] = (double)v;
-			tid += tnm;
-		}
+	__global__ void KERNEL_FUNC_NAME(set_value)(real out[], count calscale, real value) {
+		CREATE_TID(calscale)
+			out[tid] = value;
+		DESTORY_TID()
 	}
 	void gbuff::zero() {
 		set((real) 0.0);
@@ -23,36 +15,34 @@ namespace lacia {
 	void gbuff::one() {
 		set((real) 1.0);
 	}
-	void gbuff::set(real v) {
-		cualgo_set_value<<<1024, 128>>>(gpubuf(), size(), v);
+	void gbuff::set(real value) {
+		CALL_KERNEL_FUNC(set_value, gpubuf(), size(), value);
 	}
 
-	__device__ real cualgo_get_rand(count seed, real min, real max) {
+	__device__ real KERNEL_FUNC_NAME(rand)(count seed, real min, real max) {
 		count t = ((((((seed * 334379) >> 3) * 334363) >> 3) * 334349) >> 3) * 334333;
 		real v = (real)t / (real)(count)0xFFFFFFFF;
 		return v * (max - min) + min;
 
 	} 
-	__global__ void cualgo_set_rand(real o[], count n, real min, real max) {
-		count tnm = blockDim.x * gridDim.x;
-		count tid = blockIdx.x * blockDim.x + threadIdx.x;
-		while (tid < n) {
-
+	__global__ void KERNEL_FUNC_NAME(rand)(real out[], count calscale, real min, real max, seed_t seed) {
+		CREATE_TID(calscale)
 			union {
 				struct {
 					count a;
 					count b;
 				};
-				real *p;
-			} u;
-			u.p = o + tid;
-
-			o[tid] = cualgo_get_rand(u.a ^ u.b, min, max);
-			tid += tnm;
-		}
+				seed_t p;
+			} u = { 0 };
+			u.p = tid * sizeof(seed_t) + seed;
+			out[tid] = KERNEL_FUNC_NAME(rand)(u.a ^ u.b, min, max);
+		DESTORY_TID()
 	}
-	void gbuff::rand(real min, real max) {
-		cualgo_set_rand << <1024, 128 >> >(gpubuf(), size(), min, max);
+	void gbuff::rand(real min, real max, seed_t seed) {
+		if (! seed) {
+			seed = (seed_t)gpubuf();
+		}
+		CALL_KERNEL_FUNC(rand, gpubuf(), size(), min, max, seed);
 	}
 
 }

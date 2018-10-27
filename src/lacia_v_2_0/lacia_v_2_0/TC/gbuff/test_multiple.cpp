@@ -12,20 +12,20 @@ namespace lacia {
 
 		gbuff a(w);
 		a.one();
-		a.dot(1.414);
+		a.multiple(1.414);
 		print(a, "[1 ... 1] * 1.414 = ");
 
 		gbuff b(w);
 		b.set(0.618);
-		b.dot(a);
+		b.multiple(a);
 		print(b, "b * a = ");
 
 		gbuff c(w);
-		c.dot(a, b);
+		c.multiple(a, b);
 		print(c, "a * b = ");
 
 		gbuff d(w);
-		d.dot(a, 1.1);
+		d.multiple(a, 1.1);
 		print(d, "a * 1.1 = ");
 
 		gbuff x(w), y(h);
@@ -49,7 +49,9 @@ namespace lacia {
 			x[i] = i;
 		}
 		x.push();
-		r.dot_multiple(x);
+		std::cout << r.size() << std::endl;
+		std::cout << x.size() << std::endl;
+		r.grouped_multiple(x);
 		print(x, "x = ");
 		print(r, "r = ");
 
@@ -58,7 +60,7 @@ namespace lacia {
 			y[i] = i;
 		}
 		y.push();
-		r.dot_multiple_t(y);
+		r.grouped_multiple_t(y);
 		print(y, "x = ");
 		print(r, "r = ");
 

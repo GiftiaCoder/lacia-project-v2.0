@@ -51,6 +51,9 @@
       <Filter>tc\gbuff</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="image_res.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -149,6 +152,15 @@
       <Filter>tc\gbuff</Filter>
     </ClInclude>
     <ClInclude Include="main.h" />
+    <ClInclude Include="gbuff_defs.cuh">
+      <Filter>gbuff</Filter>
+    </ClInclude>
+    <ClInclude Include="mempool.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="image_res.h">
+      <Filter>image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="gbuff">
@@ -163,14 +175,14 @@
     <Filter Include="tc\gbuff">
       <UniqueIdentifier>{6c213b3e-2bbb-4cd6-8aaf-42359b6addf3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{5a33643a-6c06-485c-aab9-5293d1c44fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="image">
+      <UniqueIdentifier>{375c7f66-95f3-4a7e-a0d1-e416372f0bb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="gbuff_algo_inc.cu">
-      <Filter>gbuff</Filter>
-    </CudaCompile>
-    <CudaCompile Include="gbuff_algo_dec.cu">
-      <Filter>gbuff</Filter>
-    </CudaCompile>
     <CudaCompile Include="gbuff_algo_multiply.cu">
       <Filter>gbuff</Filter>
     </CudaCompile>
@@ -181,6 +193,9 @@
       <Filter>gbuff</Filter>
     </CudaCompile>
     <CudaCompile Include="gbuff_algo_set.cu">
+      <Filter>gbuff</Filter>
+    </CudaCompile>
+    <CudaCompile Include="gbuff_ops.cu">
       <Filter>gbuff</Filter>
     </CudaCompile>
   </ItemGroup>

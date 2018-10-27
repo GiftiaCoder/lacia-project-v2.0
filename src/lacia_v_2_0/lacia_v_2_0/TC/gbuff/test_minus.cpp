@@ -19,13 +19,13 @@ namespace lacia {
 
 		b.one();
 
-		a.dec(b);
+		a.minus(b);
 		print(a, "a = a - b");
 
 		c.minus(a, b);
 		print(c, "c = a - b");
 
-		c.dec(3.1419);
+		c.minus(3.1419);
 		print(c, "c -= 3.14159");
 
 		a.minus(c, 0.618);

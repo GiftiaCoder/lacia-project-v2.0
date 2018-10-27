@@ -22,6 +22,7 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="exception.h" />
     <ClInclude Include="gbuff.h" />
+    <ClInclude Include="gbuff_defs.cuh" />
     <ClInclude Include="gtest\gtest-death-test.h" />
     <ClInclude Include="gtest\gtest-message.h" />
     <ClInclude Include="gtest\gtest-param-test.h" />
@@ -46,17 +47,20 @@
     <ClInclude Include="gtest\internal\gtest-string.h" />
     <ClInclude Include="gtest\internal\gtest-tuple.h" />
     <ClInclude Include="gtest\internal\gtest-type-util.h" />
+    <ClInclude Include="image_res.h" />
     <ClInclude Include="lacia.h" />
     <ClInclude Include="lacia_layer.h" />
     <ClInclude Include="lacia_network.h" />
     <ClInclude Include="lacia_reduct_layer.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="mempool.h" />
     <ClInclude Include="src\gtest-internal-inl.h" />
     <ClInclude Include="TC\gbuff\test_tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exception.cpp" />
     <ClCompile Include="gbuff.cpp" />
+    <ClCompile Include="image_res.cpp" />
     <ClCompile Include="lacia_layer.cpp" />
     <ClCompile Include="lacia_reduct_layer.cpp" />
     <ClCompile Include="main.cpp" />
@@ -75,12 +79,11 @@
     <ClCompile Include="TC\gbuff\test_sum.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="gbuff_algo_dec.cu" />
     <CudaCompile Include="gbuff_algo_funcs.cu" />
-    <CudaCompile Include="gbuff_algo_inc.cu" />
     <CudaCompile Include="gbuff_algo_multiply.cu" />
     <CudaCompile Include="gbuff_algo_set.cu" />
     <CudaCompile Include="gbuff_algo_sum.cu" />
+    <CudaCompile Include="gbuff_ops.cu" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{11887786-8D6F-4E32-BB7A-FB84E895B942}</ProjectGuid>

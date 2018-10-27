@@ -19,16 +19,16 @@ namespace lacia {
 
 		b.one();
 		
-		a.inc(b);
+		a.plus(b);
 		print(a, "a = a + b");
 
-		c.add(a, b);
+		c.plus(a, b);
 		print(c, "c = a + b");
 
-		c.inc(3.1419);
+		c.plus(3.1419);
 		print(c, "c += 3.14159");
 
-		a.add(c, 0.618);
+		a.plus(c, 0.618);
 		print(a, "a = c + 0.618");
 
 		system("pause");
